@@ -1,0 +1,162 @@
+@import 'blocks/fonts'
+@import 'blocks/vars'
+
+/* ====================================================== ОБЩИЕ СТИЛИ */ 
+*,
+p,
+h1,h2,h3,h4,h5,h6
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+	line-height: normal
+	user-select: none
+
+html 
+	// font-size: 0.833335vw
+	font-size: 16px
+	overflow-x: hidden
+
+body
+	height: 1000rem
+	font-family: $font-1
+	font-weight: 400
+	color: #fff
+	background: #171919
+	overflow: hidden
+
+ul 
+	margin: 0
+	padding: 0
+	list-style: none
+
+a 
+	text-decoration: none
+	&:hover
+		text-decoration: none
+
+button 
+	background: transparent
+	border: none
+	outline: none
+	cursor: pointer
+	&:focus
+		outline: none
+
+input
+	outline: none
+
+section
+	position: relative
+
+.title
+	position: relative
+	display: inline-flex
+	margin: 0 0 0 15rem
+	font-size: 5rem
+	font-weight: 800
+	text-transform: uppercase
+	&::after
+		content: ''
+		position: absolute
+		top: 0rem
+		right: 0
+		width: 5rem
+		height: 1px
+		background: $green
+
+.backtitle
+	position: absolute
+	top: 0rem
+	// right: 1.3rem
+	font-size: 12.5rem
+	font-weight: 800
+	color: rgba(255,255,255,0.02)
+	text-transform: uppercase
+	line-height: 9.75rem
+
+.location
+	display: flex
+	flex-direction: column
+	align-items: flex-end
+	padding: 0 5rem 0 0
+	&__title
+		position: relative
+		font-size: $px22
+		color: rgba(255,255,255,0.5)
+		letter-spacing: 0.4375rem
+		text-transform: uppercase
+		&::after
+			content: ''
+			position: absolute
+			top: 50%
+			left: -7rem
+			width: 5rem
+			height: 1px
+			background: rgba(255,255,255,0.5)
+	&__value
+		display: flex
+		align-items: center
+		margin: 0 0 1rem 0
+		font-size: $px40
+		font-weight: 800
+		text-transform: uppercase
+	&__divider
+		margin: 0 1rem
+		font-weight: 300
+
+.slider-nav
+	position: relative
+	z-index: 2
+	display: flex
+	align-items: center
+	justify-content: flex-end
+	button
+		margin: 0 0 0 1rem
+		svg
+			width: 1.5rem
+			fill: rgba(255,255,255,.5)
+			transition: all .3s
+		&:hover
+			svg
+				fill: rgba(255,255,255,1)
+
+.swiper-fade .swiper-slide
+	opacity: 0 !important
+.swiper-fade .swiper-slide-active
+	opacity: 1 !important
+
+.mobile
+	display: none
+
+@media screen and ( max-width: 1400px )
+	html
+		font-size: 1.1vw
+
+@media screen and ( max-width: 992px )
+	html
+		font-size: 10px
+	.mobile
+		display: block
+	.desctop
+		display: none
+	.title
+		margin: 0 0 2rem 1rem
+	.location
+		padding: 0 1rem 0 0
+
+/* ============================================================= PRELOADER */
+@import 'blocks/preloader'
+/* ============================================================= NAVIGATION */
+@import 'blocks/navigation'
+/* ============================================================= SECTION */
+@import 'blocks/home'
+/* ============================================================= SECTION */
+@import 'blocks/surf'
+/* ============================================================= SECTION */
+@import 'blocks/travel'
+/* ============================================================= SECTION */
+@import 'blocks/sleep'
+/* ============================================================= SECTION */
+@import 'blocks/shop'
+/* ============================================================= FOOTER */
+@import 'blocks/footer'

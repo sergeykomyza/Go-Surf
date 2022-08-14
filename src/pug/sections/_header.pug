@@ -1,0 +1,10 @@
+header.header
+	i.fab.fa-500px
+	.container 
+		.row 
+			.col
+				.header__box
+					ul.header__menu.menu
+						each item, hrefs in {section1:'Section 1', section2:'Section 2', section3:'Section 3', section4:'Section 4', section5:'Section 5'}
+							li.menu__item
+								a.menu__link(href="#"+ hrefs )= '' + item

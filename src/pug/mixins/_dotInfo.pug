@@ -1,0 +1,18 @@
+mixin dotInfo(beach, country, surfData, surfName, waterData, waterName, windData, windName)
+	.dot__info.dot-info 
+		.dot-info__pos
+			h6.dot-info__beach #{beach}
+			p.dot-info__country #{country}
+		.dot-info__indicators
+			.indicator
+				img.indicator__icon.indicator__icon--surf(src="img/Surf-green.svg", alt="icon")
+				p.indicator__data #{surfData}
+				p.indicator__name #{surfName}
+			.indicator 
+				img.indicator__icon.indicator__icon--water(src="img/Water.svg", alt="icon")
+				p.indicator__data #{waterData}
+				p.indicator__name #{waterName}
+			.indicator 
+				img.indicator__icon.indicator__icon--wind(src="img/Wind.svg", alt="icon")
+				p.indicator__data #{windData}
+				p.indicator__name #{windName}

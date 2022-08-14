@@ -1,0 +1,74 @@
+.travel
+	padding: 4rem 0
+	overflow: hidden
+
+	.content-swiper
+		padding: 10rem 0 21rem 0
+
+	&-slide
+		&__img
+			width: 69.7rem
+			margin: -11rem 0 0 0
+		&__fly
+			position: absolute
+			right: 0
+			bottom: 16rem
+			width: 45.1875rem
+		&__decor
+			position: absolute
+			right: 0
+			bottom: -25rem
+			width: 20.0625rem
+
+	&__nav
+		padding: 0 5rem 0 0
+
+.data
+	width: 73.125rem
+	margin: -6rem auto 0 auto
+	&-heading
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		margin: 0 0 8rem 0
+		&__title
+			@extend .location__title
+			&::after
+				left: inherit
+				right: -7rem
+		&__value
+			@extend .location__value
+		&__icon
+			width: 3.25rem
+			margin: 0rem 0 0 1rem
+	&__items
+		display: flex
+	&__item
+		width: 25%
+		display: flex
+		align-items: flex-start
+	&__title
+		margin: 0 1rem 0 0
+		font-size: $px18
+		color: rgba(255,255,255,0.5)
+		letter-spacing: 0.5rem
+		text-transform: uppercase
+		writing-mode: vertical-lr
+		transform: rotate(180deg)
+	&__value
+		font-size: $px40
+		font-weight: 800
+		text-transform: uppercase
+		line-height: $px36
+
+@media(max-width: 768px)
+	.data
+		&__items
+			flex-direction: column
+		&__item
+			flex-direction: column
+			width: 100%
+			margin: 0 0 1rem 0
+		&__title
+			writing-mode: horizontal-tb
+			transform: none

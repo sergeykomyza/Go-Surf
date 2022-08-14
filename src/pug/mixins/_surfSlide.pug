@@ -1,0 +1,9 @@
+mixin surfSlide(name, info, img)
+	.swiper-slide.surf-slide
+		.surf-slide__name #{name}
+		.surf-slide__info #{info}
+		img.surf-slide__img(src="img/" + img, alt=name)
+		a.surf-slide__view.surf-view(href="") 
+			b.surf-view__word view 
+			b.surf-view__word surf 
+			img.surf-view__arrow(src="img/arrow-right.svg", alt="arrow-icon")

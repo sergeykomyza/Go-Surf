@@ -1,0 +1,257 @@
+.surf
+	padding: 9.81rem 0 4rem 0
+	overflow: hidden
+
+	&__backtitle
+
+	&__map
+		position: relative
+		z-index: 2
+		width: 78.6875rem
+		height: 41.625rem
+		margin: 0rem auto 0 auto
+
+	.swiper
+		width: 93.75rem
+		padding: 4rem 0
+
+	&-slide
+		position: relative
+		height: 40rem
+		overflow: hidden
+		transition: all .3s
+		&::after
+			content: ''
+			position: absolute
+			z-index: 3
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			background: rgba(0,0,0,0.8)
+			transition: background .3s
+		&__img
+			width: 100%
+			height: 100%
+			object-fit: cover
+		&__name
+			position: absolute
+			top:  4.375rem
+			left: $px40
+			width: 10rem
+			font-size: $px40
+			line-height: $px36
+			font-weight: 800
+			color: #fff
+			text-transform: uppercase
+			text-shadow: 2px 2px 2px #000
+		&__info
+			position: absolute
+			left: $px40
+			bottom: 5rem
+			font-size: $px18
+			font-weight: 250
+			line-height: $px22
+			letter-spacing: 0.5rem
+			text-shadow: 10px 10px 2px #000
+			text-transform: uppercase
+			writing-mode: vertical-rl
+			transform: rotate(180deg)
+		&.active-slide
+			&::after
+				z-index: 1
+				background: rgba(0,0,0,0)
+			.surf-view
+				&::after
+					width: 65%
+		&:hover 
+			&::after
+				z-index: 1
+				background: rgba(0,0,0,0)
+			.surf-view
+				&::after
+					width: 65%
+
+	&-view
+		position: absolute
+		bottom: 1rem
+		left: 3rem
+		display: flex
+		align-items: center
+		&__word
+			position: relative
+			z-index: 2
+			font-size: $px40
+			font-weight: 800
+			line-height: 3.25rem
+			color: #FFF
+			text-transform: uppercase
+			&:nth-of-type(1)
+				padding: 0 2rem 0 0
+				&::after
+					content: ''
+					position: absolute
+					top: 50%
+					right: .4rem
+					width: $px20
+					height: 1px
+					background: #FFF
+			&:nth-of-type(2)
+				padding: 0 1rem 0 0
+		&__arrow
+			position: relative
+			z-index: 2
+			width: $px24
+		&::after
+			content: ''
+			position: absolute
+			z-index: 1
+			right: -1rem
+			top: 0
+			width: 0%
+			height: 100%
+			background: $green
+			transition: width .5s
+		&:hover
+			&::after
+				width: 130% !important
+
+.map
+	&__img
+		width: 100%
+		height: 100%
+	&__dots
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+
+.dot
+	position: absolute
+	&--1
+		top: 23rem
+		left: 1rem
+	&--2
+		top: 19rem
+		left: 9rem
+	&--3
+		top: 21rem
+		left: 21rem
+	&--4
+		top: 32rem
+		left: 27rem
+	&--5
+		top: 14rem
+		left: 35rem
+	&--6
+		top: 36rem
+		left: 42rem
+	&--7
+		top: 26rem
+		left: 53rem
+	&--8
+		top: 33rem
+		left: 71rem
+	&__animate
+		width: $px24
+		height: $px24
+		border-radius: 100%
+		background: $green
+		box-shadow: 0px 0px 0px rgba(74, 246, 205, 0)
+		cursor: pointer
+		transform: rotate(45deg)
+		transition: box-shadow 1s, border-radius .3s
+		&:hover
+			border-radius: 0 50% 50% 50%
+			animation-name: mapDotAnimation
+			animation-duration: 1.2s
+			animation-iteration-count: infinite
+			&::after
+				top: -1.3rem
+	&.active-dot
+		.dot__animate
+			border-radius: 0 50% 50% 50%
+			animation-name: mapDotAnimation
+			animation-duration: 1.2s
+			animation-iteration-count: infinite
+			&::after
+				top: -1.3rem
+		.dot-info
+			opacity: 1
+
+.dot-info
+	position: absolute
+	z-index: 3
+	top: -15rem
+	left: -6rem
+	display: flex
+	flex-direction: column
+	width: 17.5rem
+	height: 13.5rem
+	padding: $px30 $px40 $px30 $px30
+	background: rgba(15, 16, 16, 0.7)
+	border-radius: 0.375rem
+	opacity: 0
+	pointer-events: none
+	transition: all .5s
+	&__beach
+		position: relative
+		margin: 0 0 1rem 0
+		font-size: $px18
+		font-weight: 800
+		text-transform: uppercase
+		&::after
+			content: ''
+			position: absolute
+			bottom: -0.5rem
+			left: 0
+			width: 5rem
+			height: 1px
+			background: $green
+	&__country
+		font-size: 1rem
+		text-transform: uppercase
+	&__indicators
+		display: flex
+		justify-content: space-between
+		margin: auto 0 0 0
+
+.indicator
+	&__icon
+		margin: 0 0 0.4rem 0
+		&--surf
+			width: $px40
+		&--water
+			width: $px19
+		&--wind
+			width: $px26
+	&__data
+		margin: 0 0 0.4rem 0
+		font-size: 1rem
+		font-weight: 800
+	&__name
+		font-size: 0.625rem
+		font-weight: 300
+		text-transform: uppercase
+
+@keyframes mapDotAnimation
+	0%
+		box-shadow: 0px 0px 0px rgba(74, 246, 205, 0)
+	50%
+		box-shadow: 0px 0px 35px rgba(74, 246, 205, 0.837777)
+	100%
+		box-shadow: 0px 0px 0px rgba(74, 246, 205, 0)
+
+@keyframes backgroundWidthAnimation
+	0%
+		width: 0%
+	100%
+		width: 65%
+
+@media screen and ( max-width: 992px )
+	.surf
+		&__map
+			display: none
+		.swiper
+			width: 100%

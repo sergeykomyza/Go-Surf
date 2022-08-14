@@ -1,0 +1,313 @@
+.home-slider
+	width: 100%
+	// height: 100vh
+	height: 58.75rem
+	overflow: hidden
+	.swiper,
+	.swiper-wrapper
+		width: 100%
+		height: 100%
+
+	&__name
+		position: absolute
+		z-index: 2
+		top: 0
+		left: 0
+		font-size: 12.5rem
+		font-weight: 800
+		color: rgba(255,255,255,0.07)
+		text-transform: uppercase
+		line-height: 9.75rem
+		opacity: 1
+		// animation-name: titleAnimation
+		// animation-duration: 2s
+		// animation-delay: 5s
+		// animation-fill-mode: forwards
+
+	&__navigation
+		position: absolute
+		z-index: 3
+		top: $px40
+		right: 5rem
+		button
+			margin: 0 0 0 $px20
+			svg
+				width: $px24
+				path 
+					fill: #fff
+					transition: fill .3s
+			&:hover path
+				fill: $green
+
+	&__map
+		position: absolute
+		z-index: 2
+		top: 0
+		right: 0
+		width: 62.5rem
+		svg 
+			width: 100%
+
+	&__dot
+		position: absolute
+		display: block
+		width: 0.375rem
+		height: 0.375rem
+		border-radius: 100%
+		background: $green
+		animation-name: dotAnimation
+		animation-iteration-count: infinite
+		cursor: pointer
+		&--1
+			top: 14rem
+			left: 22rem
+			animation-duration: 1s
+		&--2
+			top: 19.35rem
+			left: 35.65rem
+			animation-duration: 1.2s
+		&--3
+			top: 23rem
+			left: 41rem
+			animation-duration: 1.4s
+		&--4
+			top: 30rem
+			left: 45rem
+			animation-duration: 1.6s
+
+	.swiper-slide
+		position: relative
+		display: flex
+		width: 100%
+		height: 100%
+		&::after
+			content: ''
+			position: absolute
+			z-index: 1
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			background: radial-gradient(62.09% 62.09% at 42.87% 49.23%, rgba(34, 34, 34, 0.426517) 0%, #0F0F0F 100%)
+		&-active
+			.route-animation
+				stroke-dashoffset: 0
+				animation-name: routeAnimation
+				animation-duration: 3.5s
+			.home-slider__route
+				&::before
+					animation-name: dotEndRoute
+					animation-duration: 1s
+					animation-delay: 2s
+					animation-fill-mode: forwards
+
+	&__img
+		position: absolute
+		z-index: -1
+		width: 100%
+		height: 100%
+		object-fit: cover
+
+	&__route
+		position: absolute
+		z-index: 2
+		right: 15rem
+		top: 5rem
+		width: 12.8125rem
+		height: 15rem
+		svg
+			width: 100%
+			height: 100%
+		&::after
+			content: ''
+			position: absolute
+			top: 0
+			right: 1.7rem
+			width: 0.8125rem
+			height: 0.8125rem
+			border-radius: 100%
+			background: $green
+		&::before
+			content: ''
+			position: absolute
+			bottom: 0
+			left: 0.8rem
+			width: 0.8125rem
+			height: 0.8125rem
+			border-radius: 100%
+			background: $green
+			transform: scale(0)
+		.route-animation
+			stroke-dasharray: 600
+			stroke-dashoffset: 600
+
+	&__begin
+		position: absolute
+		z-index: 2
+		top: 4.8rem
+		right: 18.5rem
+		font-size: 1rem
+		color: #FFF
+
+	&__end
+		position: absolute
+		bottom: -0.2rem
+		left: -11rem
+		font-size: 1rem
+		color: #FFF
+
+	&__pagination
+		position: absolute
+		z-index: 2
+		bottom: 3rem !important
+		display: flex
+		justify-content: flex-end
+		padding: 0 5rem 0 0
+
+	&__bullet
+		position: relative
+		width: 12.5rem
+		height: 0.25rem
+		border-radius: 0
+		background: #FFF
+		opacity: 1
+		cursor: pointer
+		&:not(&:nth-of-type(4))
+			margin: 0 $px40 0 0
+		&::after
+			position: absolute
+			left: 0
+			font-size: $px24
+			font-weight: 800
+			color: #FFF
+		&::before
+			position: absolute
+			top: 0.6rem
+			right: 0
+			font-size: 1rem
+			font-weight: 300
+			color: #FFF
+		&:nth-of-type(1)
+			&::after
+				content: '01'
+			&::before
+				content: 'North Shore'
+		&:nth-of-type(2)
+			&::after
+				content: '02'
+			&::before
+				content: 'South Shore'
+		&:nth-of-type(3)
+			&::after
+				content: '03'
+			&::before
+				content: 'West Shore'
+		&:nth-of-type(4)
+			&::after
+				content: '04'
+			&::before
+				content: 'East Shore'
+
+	.progressline
+		display: block
+		width: 0%
+		height: 100%
+		background: $green
+		font-size: 9px
+		text-align: center
+
+	&__heading
+		position: relative
+		z-index: 2
+		display: flex
+		flex-direction: column
+		align-items: flex-end
+		margin: auto 5rem 7rem auto
+
+	&__down
+		position: absolute
+		z-index: 2
+		left: 13.06rem
+		bottom: 2.56rem
+		transrom: translateY(0rem)
+		animation-name: arrowDownAnimation
+		animation-duration: 1s
+		animation-iteration-count: infinite
+		img 
+			width: $px20
+
+.heading
+	color: #FFF
+	text-transform: uppercase
+	&__name
+		position: relative
+		font-size: $px22
+		line-height: $px32
+		letter-spacing: 0.4581rem
+		opacity: 0.5
+		&::before
+			content: ''
+			position: absolute
+			top: 50%
+			left: -7rem
+			width: 5rem
+			height: 1px
+			background: rgba(255,255,255,0.5)
+	&__title
+		margin: 0 0 2rem
+		font-size: 5rem
+		font-weight: 800
+		line-height: 5.375rem
+		text-align: right
+	&__val
+		font-size: $px40
+		font-weight: 800
+
+@keyframes routeAnimation
+	0% 
+		stroke-dashoffset: 600
+	100% 
+		stroke-dashoffset: 0
+
+@keyframes dotAnimation
+	0%
+		transform: scale(1)
+	50%
+		transform: scale(2)
+	100%
+		transform: scale(1)
+
+@keyframes dotEndRoute
+	0%
+		transform: scale(0)
+	100%
+		transform: scale(1)
+
+@keyframes arrowDownAnimation
+	0%
+		transrom: translateY(0rem)
+	50%
+		transform: translateY(1rem)
+	100%
+		transform: translateY(0rem)
+
+@media screen and ( max-width: 992px )
+	.home-slider
+		height: 56.75rem
+
+	.home-slider
+		&__map,
+		&__route,
+		&__pagination
+			display: none
+		&__navigation
+			right: 1rem
+		&__heading
+			margin: auto 1rem 7rem auto
+		&__down
+			left: 2rem
+			bottom: 3rem
+
+	.heading
+		&__title
+			font-size: 4.5rem
