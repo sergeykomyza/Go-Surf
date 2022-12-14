@@ -1,23 +1,24 @@
 .surf
-	padding: 9.81rem 0 4rem 0
+	padding: 7.5rem 0
 	overflow: hidden
-
-	&__backtitle
 
 	&__map
 		position: relative
 		z-index: 2
-		width: 78.6875rem
-		height: 41.625rem
-		margin: 0rem auto 0 auto
+		width: 119.9rem
+		height: 63.4rem
+		margin: 5rem auto 0 auto
+
+	&__nav
+		margin: 0 0 0 0
 
 	.swiper
-		width: 93.75rem
+		width: 144rem
 		padding: 4rem 0
 
 	&-slide
 		position: relative
-		height: 40rem
+		height: 75rem
 		overflow: hidden
 		transition: all .3s
 		&::after
@@ -30,6 +31,12 @@
 			height: 100%
 			background: rgba(0,0,0,0.8)
 			transition: background .3s
+		&__viewlink
+			position: absolute
+			bottom: 0rem
+			left: 3rem
+			&::after
+				width: 0%
 		&__img
 			width: 100%
 			height: 100%
@@ -37,21 +44,21 @@
 		&__name
 			position: absolute
 			top:  4.375rem
-			left: $px40
+			left: 4rem
 			width: 10rem
-			font-size: $px40
-			line-height: $px36
+			font-size: 4rem
+			line-height: 3.6rem
 			font-weight: 800
 			color: #fff
 			text-transform: uppercase
 			text-shadow: 2px 2px 2px #000
 		&__info
 			position: absolute
-			left: $px40
-			bottom: 5rem
-			font-size: $px18
+			left: 2.5rem
+			bottom: 9rem
+			font-size: 1.8rem
 			font-weight: 250
-			line-height: $px22
+			line-height: 2.2rem
 			letter-spacing: 0.5rem
 			text-shadow: 10px 10px 2px #000
 			text-transform: uppercase
@@ -61,60 +68,16 @@
 			&::after
 				z-index: 1
 				background: rgba(0,0,0,0)
-			.surf-view
+			.surf-viewlink
 				&::after
-					width: 65%
+					width: 61%
 		&:hover 
 			&::after
 				z-index: 1
 				background: rgba(0,0,0,0)
-			.surf-view
+			.surf-viewlink
 				&::after
-					width: 65%
-
-	&-view
-		position: absolute
-		bottom: 1rem
-		left: 3rem
-		display: flex
-		align-items: center
-		&__word
-			position: relative
-			z-index: 2
-			font-size: $px40
-			font-weight: 800
-			line-height: 3.25rem
-			color: #FFF
-			text-transform: uppercase
-			&:nth-of-type(1)
-				padding: 0 2rem 0 0
-				&::after
-					content: ''
-					position: absolute
-					top: 50%
-					right: .4rem
-					width: $px20
-					height: 1px
-					background: #FFF
-			&:nth-of-type(2)
-				padding: 0 1rem 0 0
-		&__arrow
-			position: relative
-			z-index: 2
-			width: $px24
-		&::after
-			content: ''
-			position: absolute
-			z-index: 1
-			right: -1rem
-			top: 0
-			width: 0%
-			height: 100%
-			background: $green
-			transition: width .5s
-		&:hover
-			&::after
-				width: 130% !important
+					width: 61%
 
 .map
 	&__img
@@ -130,32 +93,32 @@
 .dot
 	position: absolute
 	&--1
-		top: 23rem
-		left: 1rem
-	&--2
-		top: 19rem
-		left: 9rem
-	&--3
-		top: 21rem
-		left: 21rem
-	&--4
-		top: 32rem
-		left: 27rem
-	&--5
-		top: 14rem
-		left: 35rem
-	&--6
-		top: 36rem
-		left: 42rem
-	&--7
-		top: 26rem
-		left: 53rem
-	&--8
 		top: 33rem
-		left: 71rem
+		left: -3.3rem
+	&--2
+		top: 29rem
+		left: 11.6rem
+	&--3
+		top: 31.8rem
+		left: 31.8rem
+	&--4
+		top: 50.2rem
+		left: 39.3rem
+	&--5
+		top: 21.1rem
+		left: 51rem
+	&--6
+		top: 55.5rem
+		left: 61.8rem
+	&--7
+		top: 39.8rem
+		left: 77.8rem
+	&--8
+		top: 50rem
+		left: 107rem
 	&__animate
-		width: $px24
-		height: $px24
+		width: 2.4rem
+		height: 2.4rem
 		border-radius: 100%
 		background: $green
 		box-shadow: 0px 0px 0px rgba(74, 246, 205, 0)
@@ -183,13 +146,13 @@
 .dot-info
 	position: absolute
 	z-index: 3
-	top: -15rem
-	left: -6rem
+	top: -23.4rem
+	left: -7rem
 	display: flex
 	flex-direction: column
-	width: 17.5rem
-	height: 13.5rem
-	padding: $px30 $px40 $px30 $px30
+	width: 28.3rem
+	height: 21.4rem
+	padding: 3rem 4rem 3rem 3rem
 	background: rgba(15, 16, 16, 0.7)
 	border-radius: 0.375rem
 	opacity: 0
@@ -197,20 +160,20 @@
 	transition: all .5s
 	&__beach
 		position: relative
-		margin: 0 0 1rem 0
-		font-size: $px18
+		margin: 0 0 2rem 0
+		font-size: 1.8rem
 		font-weight: 800
 		text-transform: uppercase
 		&::after
 			content: ''
 			position: absolute
-			bottom: -0.5rem
+			bottom: -1rem
 			left: 0
-			width: 5rem
+			width: 8rem
 			height: 1px
 			background: $green
 	&__country
-		font-size: 1rem
+		font-size: 1.6rem
 		text-transform: uppercase
 	&__indicators
 		display: flex
@@ -218,20 +181,23 @@
 		margin: auto 0 0 0
 
 .indicator
+	display: flex
+	flex-direction: column
+	align-items: center
 	&__icon
 		margin: 0 0 0.4rem 0
 		&--surf
-			width: $px40
+			width: 4rem
 		&--water
-			width: $px19
+			width: 1.9rem
 		&--wind
-			width: $px26
+			width: 2.6rem
 	&__data
 		margin: 0 0 0.4rem 0
-		font-size: 1rem
+		font-size: 1.6rem
 		font-weight: 800
 	&__name
-		font-size: 0.625rem
+		font-size: 1rem
 		font-weight: 300
 		text-transform: uppercase
 

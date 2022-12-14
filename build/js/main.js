@@ -19,13 +19,9 @@ function preloader(value){
         homeSwiperInit()
     }
 }
-preloader(false)
 
-// homeSwiperInit()
-surfSwiperInit()
-travelSwiperInit()
 // ================================================== МОБИЛЬНОЕ МЕНЮ
-document.addEventListener('DOMContentLoaded', ()=>{
+function mobileMenu(){
     const gamburger = document.querySelector('.gamburger');
     const firstLine = gamburger.querySelectorAll('span')[0];
     const middleLine = gamburger.querySelectorAll('span')[1];
@@ -36,9 +32,22 @@ document.addEventListener('DOMContentLoaded', ()=>{
         lastLine.classList.toggle('open');
         document.querySelector('.navigation').classList.toggle('active')
     });
-})
+}
 
 // ================================================== СЛАЙДЕРЫ
+// функция смены названий локации
+function locationName(parent, currentName) {
+    const names = document.querySelector(parent).querySelectorAll('.location__value') // перебираем названия...
+    names.forEach((item) => {
+        item.style.display = 'none'                             // ...скрываем их все...
+        item.classList.remove('animate__fadeIn')                
+        item.classList.add('animate__fadeOut')                  
+    })
+    names[currentName].style.display = 'block'                  // ...показываем только то название, индекс которого совпадаем с индексом активного слайда...
+    names[currentName].classList.remove('animate__fadeOut')     
+    names[currentName].classList.add('animate__fadeIn')  
+}
+
 function homeSwiperInit() {
     const swiper = new Swiper('.home-slider .swiper', {
         effect: 'fade',
@@ -137,32 +146,19 @@ function surfSwiperInit() {
             768: {
                 slidesPerView: 3,
             },
-            992: {
+            991: {
                 slidesPerView: 4,
             },
         },
     });
-
-    // функция смены названий локации
-    function locationName(currentName) {
-        const names = document.querySelector('.surf').querySelectorAll('.location__value') // перебираем названия...
-        names.forEach((item) => {
-            item.style.display = 'none'                             // ...скрываем их все...
-            item.classList.remove('animate__fadeIn')                
-            item.classList.add('animate__fadeOut')                  
-        })
-        names[currentName].style.display = 'block'                  // ...показываем только то название, индекс которого совпадаем с индексом активного слайда...
-        names[currentName].classList.remove('animate__fadeOut')     
-        names[currentName].classList.add('animate__fadeIn')         
-    }
 
     // управление слайдером через точки на карте
     const dots = document.querySelectorAll('.dot')
     const slides = document.querySelectorAll('.surf-slide')
     for (let i = 0; i < dots.length; i++) { // перебираем точки
         let activeDot = dots[i]                                               // выносим их в переменную
-        activeDot.onclick = function () {
-            locationName(i)                                    // кликаем по точке
+        activeDot.onclick = function () {   // кликаем по точке
+            locationName('.surf', i)                                    
             swiper.slideTo(i, 1000, false) // при помощи встроенной функции двигаем слайдер. Активным становится слайд, соответствующий кликнутой точке
             dots.forEach(item => { item.classList.remove('active-dot') })         // у всех точек, кроме кликнутой, убираем активный класс
             slides.forEach(item => { item.classList.remove('active-slide') })     // у всех слайдов, кроме соответствующего активной точке, убираем активный класс
@@ -200,23 +196,41 @@ function surfSwiperInit() {
             }
         })
 
-        locationName(swiper.activeIndex)
+        locationName('.surf', swiper.activeIndex)
     }
 
     slidesTranslate() // функция выполняется сразу при загрузке
 
 }
 
-function travelSwiperInit(){
-    const swiper = new Swiper('.travel .swiper', {
+function travelSwiperInit(nameSlider){
+    const swiper = new Swiper(`${nameSlider} .swiper`, {
         effect: 'fade',
+        on: {
+            slideChange: function () {
+                locationName(nameSlider, swiper.activeIndex)
+            },
+        },
         navigation: {
-            nextEl: '.travel__nav .slider-nav--next',
-            prevEl: '.travel__nav .slider-nav--prev',
+            nextEl: `${nameSlider}__nav .slider-nav--next`,
+            prevEl: `${nameSlider}__nav .slider-nav--prev`,
         },
         parallax: true
     });
+    locationName(nameSlider, swiper.activeIndex)
 }
+
+function countPrice(){
+    const btnCount = document.querySelectorAll('.data__btn')
+    btnCount.forEach(item => {
+        item.addEventListener('click', function(){
+            const itemCount = this.closest('.data__box').querySelector('.data__value span')
+            console.log(itemCount)
+        })
+    })
+}
+countPrice()
+
 // ================================================== ДАТА
 const date = function () {
     let date = new Date();
@@ -226,24 +240,15 @@ const date = function () {
     if(dayNum.innerText < 10){
         dayNum.innerText = '0' + date.getDate()
     }
-    if(dayNum.innerText > 10){
+    else{
         dayNum.innerText = date.getDate()
     } 
-    monthNum.innerText < 10 ? monthNum.innerText = '0' + (date.getMonth() + 1) : monthNum.innerText = date.getMonth() + 1
+    date.getMonth() < 10 ? monthNum.innerText = '0' + (date.getMonth() + 1) : monthNum.innerText = date.getMonth() + 1
     yearNum.innerText = date.getFullYear()
 }
-date()
-
-// ==================================================
-// ==================================================
-// ==================================================
-// ==================================================
-// ==================================================
-// ==================================================
-// ==================================================
 
 // ================================================== GSAP
-window.addEventListener('DOMContentLoaded', function () {
+function animation(){
 
     gsap.fromTo(".home-slider__name", {
         y: 0
@@ -352,4 +357,15 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-})
+}
+
+
+
+preloader(false)
+mobileMenu()
+homeSwiperInit()
+surfSwiperInit()
+travelSwiperInit('.travel')
+travelSwiperInit('.sleep')
+date()
+// animation()

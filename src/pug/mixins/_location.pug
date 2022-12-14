@@ -1,0 +1,10 @@
+mixin location(title, locations)
+	.location
+		p.location__title= title
+
+		each item in locations
+			b.location__value.animate__animated 
+				| #{item.town}
+				span.location__divider |
+				| #{item.country}
+

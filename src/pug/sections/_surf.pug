@@ -1,94 +1,169 @@
-include ./../mixins/_surfSlide.pug
-include ./../mixins/_dotInfo.pug
+
+-
+	dotInfo = [
+		{
+			dotNum: 1, 
+			dotBeach: 'malibu beach', 
+			dotCountry: 'usa',
+			indicators: [
+				{indicatorIcon: 'Surf-green.svg', indicatorIconName: 'surf',  indicatorData: '9 - 13', indicatorName: 'Surf (FT)'},
+				{indicatorIcon: 'Water.svg',      indicatorIconName: 'water', indicatorData: '+2.3',   indicatorName: 'tide (FT)'},
+				{indicatorIcon: 'Wind.svg',       indicatorIconName: 'wind',  indicatorData: '4 se',   indicatorName: 'wind (kts)'}
+			]
+		},
+		{
+			dotNum: 2, 
+			dotBeach: 'airlie beach', 
+			dotCountry: 'australia',
+			indicators: [
+				{indicatorIcon: 'Surf-green.svg', indicatorIconName: 'surf',  indicatorData: '9 - 13', indicatorName: 'Surf (FT)'},
+				{indicatorIcon: 'Water.svg',      indicatorIconName: 'water', indicatorData: '+2.3',   indicatorName: 'tide (FT)'},
+				{indicatorIcon: 'Wind.svg',       indicatorIconName: 'wind',  indicatorData: '4 se',   indicatorName: 'wind (kts)'}
+			]
+		},
+		{
+			dotNum: 3, 
+			dotBeach: 'cloud nine', 
+			dotCountry: 'philippines',
+			indicators: [
+				{indicatorIcon: 'Surf-green.svg', indicatorIconName: 'surf',  indicatorData: '9 - 13', indicatorName: 'Surf (FT)'},
+				{indicatorIcon: 'Water.svg',      indicatorIconName: 'water', indicatorData: '+2.3',   indicatorName: 'tide (FT)'},
+				{indicatorIcon: 'Wind.svg',       indicatorIconName: 'wind',  indicatorData: '4 se',   indicatorName: 'wind (kts)'}
+			]
+		},
+		{
+			dotNum: 4, 
+			dotBeach: 'vieux boucau', 
+			dotCountry: 'france',
+			indicators: [
+				{indicatorIcon: 'Surf-green.svg', indicatorIconName: 'surf',  indicatorData: '9 - 13', indicatorName: 'Surf (FT)'},
+				{indicatorIcon: 'Water.svg',      indicatorIconName: 'water', indicatorData: '+2.3',   indicatorName: 'tide (FT)'},
+				{indicatorIcon: 'Wind.svg',       indicatorIconName: 'wind',  indicatorData: '4 se',   indicatorName: 'wind (kts)'}
+			]
+		},
+		{
+			dotNum: 5, 
+			dotBeach: 'malibu beach', 
+			dotCountry: 'usa',
+			indicators: [
+				{indicatorIcon: 'Surf-green.svg', indicatorIconName: 'surf',  indicatorData: '9 - 13', indicatorName: 'Surf (FT)'},
+				{indicatorIcon: 'Water.svg',      indicatorIconName: 'water', indicatorData: '+2.3',   indicatorName: 'tide (FT)'},
+				{indicatorIcon: 'Wind.svg',       indicatorIconName: 'wind',  indicatorData: '4 se',   indicatorName: 'wind (kts)'}
+			]
+		},
+		{
+			dotNum: 6, 
+			dotBeach: 'airlie beach', 
+			dotCountry: 'australia',
+			indicators: [
+				{indicatorIcon: 'Surf-green.svg', indicatorIconName: 'surf',  indicatorData: '9 - 13', indicatorName: 'Surf (FT)'},
+				{indicatorIcon: 'Water.svg',      indicatorIconName: 'water', indicatorData: '+2.3',   indicatorName: 'tide (FT)'},
+				{indicatorIcon: 'Wind.svg',       indicatorIconName: 'wind',  indicatorData: '4 se',   indicatorName: 'wind (kts)'}
+			]
+		},
+		{
+			dotNum: 7, 
+			dotBeach: 'cloud nine', 
+			dotCountry: 'philippines',
+			indicators: [
+				{indicatorIcon: 'Surf-green.svg', indicatorIconName: 'surf',  indicatorData: '9 - 13', indicatorName: 'Surf (FT)'},
+				{indicatorIcon: 'Water.svg',      indicatorIconName: 'water', indicatorData: '+2.3',   indicatorName: 'tide (FT)'},
+				{indicatorIcon: 'Wind.svg',       indicatorIconName: 'wind',  indicatorData: '4 se',   indicatorName: 'wind (kts)'}
+			]
+		},
+		{
+			dotNum: 8, 
+			dotBeach: 'vieux boucau', 
+			dotCountry: 'france',
+			indicators: [
+				{indicatorIcon: 'Surf-green.svg', indicatorIconName: 'surf',  indicatorData: '9 - 13', indicatorName: 'Surf (FT)'},
+				{indicatorIcon: 'Water.svg',      indicatorIconName: 'water', indicatorData: '+2.3',   indicatorName: 'tide (FT)'},
+				{indicatorIcon: 'Wind.svg',       indicatorIconName: 'wind',  indicatorData: '4 se',   indicatorName: 'wind (kts)'}
+			]
+		},
+	]
+
+	locations = [
+		{
+			town: 'California', 
+			country: 'USA'
+		},
+		{
+			town: 'Queensland', 
+			country: 'Australia'
+		},
+		{
+			town: 'Siargao', 
+			country: 'Philippines'
+		},
+		{
+			town: 'Hossegor', 
+			country: 'France'
+		},
+		{
+			town: 'California', 
+			country: 'USA'
+		},
+		{
+			town: 'Queensland', 
+			country: 'Australia'
+		},
+		{
+			town: 'Siargao', 
+			country: 'Philippines'
+		},
+		{
+			town: 'Hossegor', 
+			country: 'France'
+		}
+	]
+
+	surfSlides = [
+		{beach: 'malibu biach', country: 'California | USA',       img: 'slide-0.webp'},
+		{beach: 'airlie biach', country: 'Queensland | Australia', img: 'slide-1.webp'},
+		{beach: 'cloud nine',   country: 'Siargao | Philippines',  img: 'slide-2.webp'},
+		{beach: 'vieux boucau', country: 'Hossegor | France',      img: 'slide-3.webp'},
+		{beach: 'malibu biach', country: 'California | USA',       img: 'slide-0.webp'},
+		{beach: 'airlie biach', country: 'Queensland | Australia', img: 'slide-1.webp'},
+		{beach: 'cloud nine',   country: 'Siargao | Philippines',  img: 'slide-2.webp'},
+		{beach: 'vieux boucau', country: 'Hossegor | France',      img: 'slide-3.webp'}
+	]
 
 section.surf
 
 	h2.surf__title.title surf
 	p.surf__backtitle.backtitle surf
 
-	.location
+	+location('current location', locations)
 
-		p.location__title current location 
-
-		b.location__value.animate__animated California
-			span.location__divider |
-			| USA
-		b.location__value.animate__animated Queensland
-			span.location__divider |
-			| Australia
-		b.location__value.animate__animated Siargao
-			span.location__divider |
-			| Philippines
-		b.location__value.animate__animated Hossegor
-			span.location__divider |
-			| France
-		b.location__value.animate__animated California
-			span.location__divider |
-			| USA
-		b.location__value.animate__animated Queensland
-			span.location__divider |
-			| Australia
-		b.location__value.animate__animated Siargao
-			span.location__divider |
-			| Philippines
-		b.location__value.animate__animated Hossegor
-			span.location__divider |
-			| France
-
-		.mobile 
-			.surf__nav.slider-nav
-				button.slider-nav--prev
-					svg(viewBox='0 0 25 21')
-						path(d='M8.77789 0.562669L0.564298 8.71345C-0.188099 9.46459 -0.188099 10.6838 0.564298 11.4324L8.77789 19.5881C9.5366 20.3392 10.7646 20.3354 11.5233 19.5881C12.2744 18.8357 12.2744 17.6215 11.5233 16.8691L6.71818 12.1016H22.1324C23.2459 12.1016 24.1467 11.202 24.1467 10.0885C24.1467 8.97625 23.2459 8.07537 22.1324 8.07537H6.68919L11.5233 3.28282C12.2744 2.53168 12.2744 1.31623 11.5233 0.565085C10.7658 -0.187313 9.53783 -0.188569 8.77789 0.562568V0.562669Z')
-				button.slider-nav--next
-					svg(viewBox='0 0 17 14')
-						path(d='M10.2791 13.1005L15.7726 7.64901C16.2758 7.14663 16.2758 6.33118 15.7726 5.83048L10.2791 0.375784C9.77169 -0.126599 8.95036 -0.124079 8.44293 0.375784C7.94055 0.879007 7.94055 1.69109 8.44293 2.19432L11.6567 5.3829L1.3473 5.3829C0.602562 5.3829 2.47955e-05 5.9846 2.47955e-05 6.72934C2.47955e-05 7.47324 0.602562 8.07578 1.3473 8.07578L11.6761 8.07578L8.44293 11.2812C7.94055 11.7836 7.94055 12.5965 8.44293 13.0989C8.94954 13.6021 9.77087 13.6029 10.2791 13.1005V13.1005Z')
+	.mobile 
+		+sliderNav('surf__nav')
 
 	.surf__map.map 
 		img.map__img(src="img/Map-Dots.webp", alt="map")
 		.map__dots
-			.dot.dot--1
-				.dot__animate
-				+dotInfo('malibu beach', 'usa', '9 - 13', 'surf (ft)', '+2.3', 'tide (ft)', '4 se', 'wind (kts)')
-			.dot.dot--2
-				.dot__animate
-				+dotInfo('airlie beach', 'australia', '9 - 13', 'surf (ft)', '+2.3', 'tide (ft)', '4 se', 'wind (kts)')
-			.dot.dot--3
-				.dot__animate
-				+dotInfo('cloud beach', 'philippines', '9 - 13', 'surf (ft)', '+2.3', 'tide (ft)', '4 se', 'wind (kts)')
-			.dot.dot--4
-				.dot__animate
-				+dotInfo('vieux beach', 'france', '9 - 13', 'surf (ft)', '+2.3', 'tide (ft)', '4 se', 'wind (kts)')
-			.dot.dot--5
-				.dot__animate
-				+dotInfo('malibu beach', 'usa', '9 - 13', 'surf (ft)', '+2.3', 'tide (ft)', '4 se', 'wind (kts)')
-			.dot.dot--6
-				.dot__animate
-				+dotInfo('airlie beach', 'australia', '9 - 13', 'surf (ft)', '+2.3', 'tide (ft)', '4 se', 'wind (kts)')
-			.dot.dot--7
-				.dot__animate
-				+dotInfo('cloud beach', 'philippines', '9 - 13', 'surf (ft)', '+2.3', 'tide (ft)', '4 se', 'wind (kts)')
-			.dot.dot--8
-				.dot__animate
-				+dotInfo('vieux beach', 'france', '9 - 13', 'surf (ft)', '+2.3', 'tide (ft)', '4 se', 'wind (kts)')
-
-		.surf__nav.slider-nav
-			button.slider-nav--prev
-				svg(viewBox='0 0 25 21')
-					path(d='M8.77789 0.562669L0.564298 8.71345C-0.188099 9.46459 -0.188099 10.6838 0.564298 11.4324L8.77789 19.5881C9.5366 20.3392 10.7646 20.3354 11.5233 19.5881C12.2744 18.8357 12.2744 17.6215 11.5233 16.8691L6.71818 12.1016H22.1324C23.2459 12.1016 24.1467 11.202 24.1467 10.0885C24.1467 8.97625 23.2459 8.07537 22.1324 8.07537H6.68919L11.5233 3.28282C12.2744 2.53168 12.2744 1.31623 11.5233 0.565085C10.7658 -0.187313 9.53783 -0.188569 8.77789 0.562568V0.562669Z')
-			button.slider-nav--next
-				svg(viewBox='0 0 17 14')
-					path(d='M10.2791 13.1005L15.7726 7.64901C16.2758 7.14663 16.2758 6.33118 15.7726 5.83048L10.2791 0.375784C9.77169 -0.126599 8.95036 -0.124079 8.44293 0.375784C7.94055 0.879007 7.94055 1.69109 8.44293 2.19432L11.6567 5.3829L1.3473 5.3829C0.602562 5.3829 2.47955e-05 5.9846 2.47955e-05 6.72934C2.47955e-05 7.47324 0.602562 8.07578 1.3473 8.07578L11.6761 8.07578L8.44293 11.2812C7.94055 11.7836 7.94055 12.5965 8.44293 13.0989C8.94954 13.6021 9.77087 13.6029 10.2791 13.1005V13.1005Z')
+			each item in dotInfo
+				div(class=`dot dot--${item.dotNum}`)
+					.dot__animate
+					.dot__info.dot-info
+						.dot-info__pos
+							h6.dot-info__beach #{item.dotBeach}
+							p.dot-info__country #{item.dotCountry}
+						.dot-info__indicators
+							each elem in item.indicators 
+								.indicator 
+									img(class=`indicator__icon indicator__icon--${elem.indicatorIconName}` src="img/" + elem.indicatorIcon, alt="icon")
+									p.indicator__data= elem.indicatorData
+									p.indicator__name= elem.indicatorName
+		.desktop
+			+sliderNav('surf__nav')
 
 	.swiper
 		.swiper-wrapper
-			+surfSlide('malibu biach','California | USA','slide-0.webp')
-			+surfSlide('airlie biach','Queensland | Australia','slide-1.webp')
-			+surfSlide('cloud nine','Siargao | Philippines','slide-2.webp')
-			+surfSlide('vieux boucau','Hossegor | France','slide-3.webp')
-			+surfSlide('malibu biach','California | USA','slide-0.webp')
-			+surfSlide('airlie biach','Queensland | Australia','slide-1.webp')
-			+surfSlide('cloud nine','Siargao | Philippines','slide-2.webp')
-			+surfSlide('vieux boucau','Hossegor | France','slide-3.webp')
+			each item in surfSlides
+				.swiper-slide.surf-slide
+					.surf-slide__name= item.beach
+					.surf-slide__info= item.country
+					img.surf-slide__img(src="img/" + item.img, alt= item.country)
+					+surfView('surf', 'view', 'surf-slide__viewlink')
 
-			

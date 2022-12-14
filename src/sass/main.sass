@@ -13,7 +13,7 @@ h1,h2,h3,h4,h5,h6
 
 html 
 	// font-size: 0.833335vw
-	font-size: 16px
+	font-size: 10px
 	overflow-x: hidden
 
 body
@@ -51,53 +51,100 @@ section
 .title
 	position: relative
 	display: inline-flex
-	margin: 0 0 0 15rem
-	font-size: 5rem
+	margin: 0 0 0 24.5rem
+	font-size: 8rem
 	font-weight: 800
 	text-transform: uppercase
 	&::after
 		content: ''
 		position: absolute
-		top: 0rem
+		top: 0.3rem
 		right: 0
-		width: 5rem
+		width: 8rem
 		height: 1px
 		background: $green
 
 .backtitle
 	position: absolute
-	top: 0rem
-	// right: 1.3rem
-	font-size: 12.5rem
+	left: -5rem
+	top: 7rem
+	font-size: 20rem
 	font-weight: 800
 	color: rgba(255,255,255,0.02)
 	text-transform: uppercase
-	line-height: 9.75rem
+
+.center-box
+	display: flex
+	justify-content: center
+
+.surf-viewlink
+	position: relative
+	display: flex
+	align-items: center
+	&__word
+		position: relative
+		z-index: 2
+		font-size: 4rem
+		font-weight: 800
+		line-height: 8rem
+		color: #FFF
+		text-transform: uppercase
+		&:nth-of-type(1)
+			padding: 0 3rem 0 0
+			&::after
+				content: ''
+				position: absolute
+				top: 50%
+				right: .4rem
+				width: 2rem
+				height: 1px
+				background: #FFF
+		&:nth-of-type(2)
+			padding: 0 1rem 0 0
+	&__arrow
+		position: relative
+		z-index: 2
+		width: 2.4rem
+	&::after
+		content: ''
+		position: absolute
+		z-index: 1
+		right: -1rem
+		top: 0
+		width: 61%
+		height: 100%
+		background: $green
+		transition: width .5s
+	&:hover
+		&::after
+			width: 130% !important
 
 .location
 	display: flex
 	flex-direction: column
 	align-items: flex-end
-	padding: 0 5rem 0 0
+	margin: 0 0 0 0
+	padding: 0 5.8rem 0 0
 	&__title
 		position: relative
-		font-size: $px22
+		margin: 0 0 1.3rem 0
+		font-size: 2.2rem
 		color: rgba(255,255,255,0.5)
-		letter-spacing: 0.4375rem
+		letter-spacing: 0.72rem
 		text-transform: uppercase
 		&::after
 			content: ''
 			position: absolute
-			top: 50%
-			left: -7rem
-			width: 5rem
+			top: 45%
+			left: -10.5rem
+			width: 8rem
 			height: 1px
 			background: rgba(255,255,255,0.5)
 	&__value
 		display: flex
 		align-items: center
-		margin: 0 0 1rem 0
-		font-size: $px40
+		margin: 0 0rem 2rem 0
+		font-size: 4rem
 		font-weight: 800
 		text-transform: uppercase
 	&__divider
@@ -110,15 +157,69 @@ section
 	display: flex
 	align-items: center
 	justify-content: flex-end
+	padding: 0 5.8rem 0 0
 	button
-		margin: 0 0 0 1rem
+		margin: 0 0 0 2rem
 		svg
-			width: 1.5rem
+			width: 2.4rem
 			fill: rgba(255,255,255,.5)
 			transition: all .3s
 		&:hover
 			svg
 				fill: rgba(255,255,255,1)
+
+.data
+	width: 117.3rem
+	margin: -35rem auto 0 auto
+	&-heading
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		margin: 0 0 17rem 0
+		&__title
+			@extend .location__title
+			&::after
+				left: inherit
+				right: -10rem
+		&__value
+			@extend .location__value
+		&__icon
+			margin: 0rem 0 0 1rem
+			&--virgin
+				width: 3.25rem
+			&--rating
+				width: 15.4rem
+	&__items
+		display: flex
+	&__item
+		width: 25%
+		display: flex
+		align-items: flex-start
+	&__title
+		margin: 0 1rem 0 0
+		font-size: 1.8rem
+		color: rgba(255,255,255,0.5)
+		letter-spacing: 0.5rem
+		text-transform: uppercase
+		writing-mode: vertical-lr
+		transform: rotate(180deg)
+	&__value
+		font-size: 4rem
+		font-weight: 800
+		text-transform: uppercase
+		line-height: 3.6rem
+	&__counting
+		display: flex
+		align-items: center
+		justify-content: flex-end
+	&__btn
+		display: flex
+		align-items: center
+		justify-content: center
+		width: 2.5rem
+		height: 2.5rem
+		svg
+			width: 1.4rem
 
 .swiper-fade .swiper-slide
 	opacity: 0 !important
@@ -130,19 +231,36 @@ section
 
 @media screen and ( max-width: 1400px )
 	html
-		font-size: 1.1vw
+		font-size: 0.7vw
 
 @media screen and ( max-width: 992px )
 	html
-		font-size: 10px
+		font-size: 1vw
 	.mobile
 		display: block
-	.desctop
+	.desktop
 		display: none
 	.title
 		margin: 0 0 2rem 1rem
 	.location
 		padding: 0 1rem 0 0
+	.slider-nav
+		padding: 0 1rem 0 0
+	.data
+		padding: 0 0 0 1rem
+		&__items
+			flex-direction: column
+		&__item
+			flex-direction: column
+			width: 100%
+			margin: 0 0 2rem 0
+		&__title
+			writing-mode: horizontal-tb
+			transform: none
+
+@media screen and ( max-width: 768px )
+	html
+		font-size: 6px
 
 /* ============================================================= PRELOADER */
 @import 'blocks/preloader'

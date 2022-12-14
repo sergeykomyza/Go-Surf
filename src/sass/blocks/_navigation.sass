@@ -3,14 +3,14 @@
 	z-index: 3
 	top: 0
 	left: 0
-	width: 10.5rem
+	width: 16.9rem
 	// height: 100vh
 	height: 100%
 	display: flex
 	flex-direction: column
 	align-items: center
 	justify-content: space-between
-	padding: $px20 0
+	padding: 4.75rem 0
 	border-right: 1px solid rgba(255,255,255,0.5)
 	&::after
 		content: ''
@@ -30,32 +30,33 @@
 	display: flex
 	justify-content: center
 	writing-mode: vertical-rl
+	margin: -2.5rem 0 0 0
 	transform: scale(-1, -1)
 	&__word
 		position: relative
-		margin: $px36 0 0 0
-		font-size: 3.75rem
+		margin: 3.75rem 0 0 0
+		font-size: 6rem
 		font-weight: 800
 		color: #fff
 		&:nth-of-type(1)
 			&::after
 				content: ''
 				position: absolute
-				bottom: -1.7rem
+				bottom: -3rem
 				left: 50%
 				width: 1px
-				height: $px20
+				height: 2rem
 				background: #FFF
 
 .menu
 	margin: auto 0 0 0
 	&__item
-		margin: 0 0 2rem 0
+		margin: 0 0 3.7rem 0
 	&__link
 		display: flex
 		flex-direction: column
 		align-items: center
-		font-size: 0.75rem
+		font-size: 1.2rem
 		font-weight: 500
 		color: #FFF
 		letter-spacing: 3px
@@ -64,37 +65,40 @@
 		&:hover .menu__icon path
 			fill: $green
 	&__icon
-		margin: 0 0 0.375rem 0
+		margin: 0 0 0 0
 		transition: all .3s
 		path
 			fill: #FFF
 		&--surf
-			width: 3.75rem
+			width: 5.65rem
+			margin: 0 0 0.7rem 0
 		&--travel
-			width: 3.125rem
+			width: 5.025rem
 		&--sleep
-			width: 3rem
+			width: 4.5rem
 		&--shop
-			width: 1.5rem
+			width: 2.5rem
 
 .search
 	svg
-		width: $px24
+		width: 2.4rem
 		&:hover path
 			fill: $green
 
 .dates
-	margin: 1rem 0 0 0
+	margin: 2.2rem 0 0 0
 	color: #FFF
 	&__day
-		font-size: 4.5rem
+		font-size: 7.2rem
 		font-weight: 800
+		line-height: 1.05
 	&__val
 		position: relative
 		display: flex
 		align-items: center
 		justify-content: space-between
-		font-size: 1rem
+		padding: 0 0.3rem
+		font-size: 1.6rem
 		font-weight: 300
 		&::after
 			content: ''
@@ -108,13 +112,13 @@
 .marker
 	display: flex
 	align-items: center
-	margin: 2rem 0 0 0
-	font-size: 0.75rem
+	margin: 3rem 0 0 0
+	font-size: 1.2rem
 	font-weight: 300
 	color: #FFF
 	letter-spacing: 1px
 	svg
-		width: 0.6875rem
+		width: 1.1rem
 		margin: 0 0.5rem 0 0
 
 .gamburger
@@ -147,11 +151,11 @@
 	0%
 		height: 0rem
 	100%
-		height: 11rem
+		height: 18rem
 
 @media screen and ( max-width: 992px )
 	.navigation
-		left: -10.5rem
+		left: -17rem
 		background: rgba(0,0,0,0.9)
 		transition: left .5s ease-in-out
 		&.active
