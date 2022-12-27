@@ -51,9 +51,6 @@ function locationName(parent, currentName) {
 function homeSwiperInit() {
     const swiper = new Swiper('.home-slider .swiper', {
         effect: 'fade',
-        autoplay: {
-            delay: 5000,
-        },
         on: {
             init: function () {
                 createProgressLines()
@@ -220,16 +217,37 @@ function travelSwiperInit(nameSlider){
     locationName(nameSlider, swiper.activeIndex)
 }
 
+function shopSwiperInit(){
+    const swiper = new Swiper('.shop .swiper', {
+        effect: 'fade',
+        navigation: {
+            nextEl: 'shop__nav .slider-nav--next',
+            prevEl: 'shop__nav .slider-nav--prev',
+        },
+        parallax: true
+    });
+}
+
+// ================================================== СЧИТАЕМ ЦЕНУ В БЛОКЕ SLEEP
 function countPrice(){
     const btnCount = document.querySelectorAll('.data__btn')
+    let sum = document.querySelector('.price')
     btnCount.forEach(item => {
         item.addEventListener('click', function(){
-            const itemCount = this.closest('.data__box').querySelector('.data__value span')
-            console.log(itemCount)
+            let itemCount = this.closest('.data__box').querySelector('.data__value span')
+            if(item.classList.contains('jsPlus')){
+                sum.innerHTML = +sum.innerHTML + +itemCount.getAttribute('data-price')
+            } else if(item.classList.contains('jsMinus') && itemCount.innerHTML > 1){
+                console.log(itemCount.innerHTML)
+                sum.innerHTML = +sum.innerHTML - +itemCount.getAttribute('data-price')
+            }
+            itemCount.innerHTML = item.classList.contains('jsPlus') ? +(itemCount.innerHTML) + 1 : +(itemCount.innerHTML) - 1
+            if(itemCount.innerHTML < 1){
+                itemCount.innerHTML = 1
+            }
         })
     })
 }
-countPrice()
 
 // ================================================== ДАТА
 const date = function () {
@@ -237,135 +255,195 @@ const date = function () {
     let dayNum = document.querySelector('.dates__day')
     let monthNum = document.querySelector('.dates__month')
     let yearNum = document.querySelector('.dates__year')
-    if(dayNum.innerText < 10){
-        dayNum.innerText = '0' + date.getDate()
-    }
-    else{
-        dayNum.innerText = date.getDate()
-    } 
-    date.getMonth() < 10 ? monthNum.innerText = '0' + (date.getMonth() + 1) : monthNum.innerText = date.getMonth() + 1
+    dayNum.innerText = ('0' + date.getDate()).slice(-2)
+    monthNum.innerText = ('0' + (date.getMonth()+1)).slice(-2)
     yearNum.innerText = date.getFullYear()
+}
+
+// ================================================== SHOP
+function board(){
+
+    let set = {
+        signPlus:            '<img src="../img/Plus.svg" alt="sign">',
+        signMinus:           '<img src="../img/Minus.svg" alt="sign">',
+        animateClassIn:      'animate__fadeInLeft',
+        animateClassOut:     'animate__fadeOutRight',
+        parentEl:            '.board__point',
+        elementDot:          '.board__dot',
+        elementText:         '.board__text',
+        classForToggleState: 'closed'
+    }
+    const points = document.querySelectorAll(set.parentEl)
+    points.forEach((item) => {
+        const pointSign = item.querySelector(set.elementDot)
+        const pointText = item.querySelector(set.elementText)
+        item.classList.add(set.classForToggleState)
+        pointSign.innerHTML = set.signPlus
+        pointText.classList.add(set.animateClassOut)
+        pointText.classList.remove(set.animateClassIn)
+        points[0].classList.remove(set.classForToggleState)
+        points[0].querySelector(set.elementDot).innerHTML = set.signMinus
+        points[0].querySelector(set.elementText).classList.remove(set.animateClassOut)
+        points[0].querySelector(set.elementText).classList.add(set.animateClassIn)
+        item.addEventListener('click', function(){
+            points.forEach(elem => {
+                const pointSignEl = elem.querySelector(set.elementDot)
+                const pointTextEl = elem.querySelector(set.elementText)
+                if(item !== elem){
+                    elem.classList.add(set.classForToggleState)
+                    pointSignEl.innerHTML = set.signPlus
+                    pointTextEl.classList.add(set.animateClassOut)
+                    pointTextEl.classList.remove(set.animateClassIn)
+                }
+            })
+            item.classList.toggle(set.classForToggleState)
+            pointText.classList.toggle(set.animateClassOut)
+            pointText.classList.toggle(set.animateClassIn)
+            if(item.classList.contains(set.classForToggleState)){
+                pointSign.innerHTML = set.signPlus
+            } else {
+                pointSign.innerHTML = set.signMinus
+            }
+        })
+    })
 }
 
 // ================================================== GSAP
 function animation(){
 
-    gsap.fromTo(".home-slider__name", {
-        y: 0
-    }, {
-        y: '49rem',
-        scrollTrigger: {
-            pin: false,
-            trigger: '.home-slider',
-            start: "730rem 730rem",
-            // end: "1000px 400px",
-            end: "1000rem 450rem",
-            // end: "+=1500",
-            scrub: 2,
+    const animationObjects = {
+        obj0: {
+            objName: '.home-slider__name',
+            beginPosition: '0', 
+            endPosition: '87rem',
+            animationTrigger: '.home-slider', 
+            startCoord: '730rem 730rem',
+            endCoord: '1000rem 450rem',
+            scrub: 2, 
             markers: false,
-            id: 'title'
+            objId: 'title'
+        },
+        obj1: {
+            objName: '.surf__backtitle',
+            beginPosition: '-30rem', 
+            endPosition: '180rem',
+            animationTrigger: '.surf', 
+            startCoord: '100rem 730rem',
+            endCoord: '2500rem bottom',
+            scrub: 2, 
+            markers: false,
+            objId: 'surf__backtitle'
+        },
+        obj2: {
+            objName: '.surf__map',
+            beginPosition: '0rem', 
+            endPosition: '-10rem',
+            animationTrigger: '.surf', 
+            startCoord: '100rem 900rem',
+            endCoord: '500rem 400rem',
+            scrub: 2, 
+            markers: false,
+            objId: 'map'
+        },
+        obj3: {
+            objName: '.surf .swiper',
+            beginPosition: '0rem', 
+            endPosition: '-10rem',
+            animationTrigger: '.surf .swiper', 
+            startCoord: '100rem 900rem',
+            endCoord: '500rem 400rem',
+            scrub: 2, 
+            markers: false,
+            objId: 'surf__slider'
+        },
+        obj4: {
+            objName: '.travel__backtitle',
+            beginPosition: '-30rem', 
+            endPosition: '140rem',
+            animationTrigger: '.travel', 
+            startCoord: '100rem 900rem',
+            endCoord: '1700rem 400rem',
+            scrub: 2, 
+            markers: false,
+            objId: 'travel__backtitle'
+        },
+        obj5: {
+            objName: '.sleep__backtitle',
+            beginPosition: '-30rem', 
+            endPosition: '153rem',
+            animationTrigger: '.sleep', 
+            startCoord: '100rem 900rem',
+            endCoord: '2200rem 400rem',
+            scrub: 2, 
+            markers: false,
+            objId: 'sleep__backtitle'
+        },
+        obj6: {
+            objName: '.shop__backtitle',
+            beginPosition: '-30rem', 
+            endPosition: '153rem',
+            animationTrigger: '.shop', 
+            startCoord: '100rem 700rem',
+            endCoord: '2400rem 400rem',
+            scrub: 2, 
+            markers: false,
+            objId: 'shop__backtitle'
+        },
+        obj7: {
+            objName: '.travel .swiper',
+            beginPosition: '0rem', 
+            endPosition: '-10rem',
+            animationTrigger: '.travel .swiper', 
+            startCoord: '100rem 900rem',
+            endCoord: '500rem 400rem',
+            scrub: 2, 
+            markers: false,
+            objId: 'travel__slider'
+        },
+        obj8: {
+            objName: '.sleep .swiper',
+            beginPosition: '0rem', 
+            endPosition: '-10rem',
+            animationTrigger: '.sleep .swiper', 
+            startCoord: '100rem 900rem',
+            endCoord: '500rem 400rem',
+            scrub: 2, 
+            markers: false,
+            objId: 'sleep__slider'
         }
-    });
+    }
 
-    gsap.fromTo(".surf__backtitle", {
-        y: '-10rem'
-    }, {
-        y: '100rem',
-        scrollTrigger: {
-            pin: false,
-            trigger: '.surf',
-            start: "170rem 730rem",
-            // end: "1000px 400px",
-            end: "2500rem bottom",
-            // end: "+=1500",
-            scrub: 2,
-            markers: false,
-            id: 'surf__backtitle'
-        }
-    });
+    const objectsArray = Object.entries(animationObjects)
 
-    gsap.from('.surf__map', {
-        y: '50rem',
-        scrollTrigger: {
-            pin: false,
-            trigger: '.surf',
-            start: "100rem 900rem",
-            end: "500rem 400rem",
-            // end: "+=1500",
-            scrub: 2,
-            markers: false,
-            id: 'map'
-        }
-    });
-
-    gsap.from('.surf .swiper', {
-        y: '20rem',
-        scrollTrigger: {
-            pin: false,
-            trigger: '.surf .swiper',
-            start: "-800rem 600rem",
-            end: "-300rem 300rem",
-            // end: "+=1500",
-            scrub: 2,
-            markers: false,
-            id: 'slider'
-        }
-    });
-
-    gsap.fromTo(".travel__backtitle", {
-        y: '-10rem'
-    }, {
-        y: '100rem',
-        scrollTrigger: {
-            pin: false,
-            trigger: '.travel',
-            start: "170rem 730rem",
-            // end: "1000px 400px",
-            end: "2500rem bottom",
-            // end: "+=1500",
-            scrub: 2,
-            markers: false,
-            id: 'travel__backtitle'
-        }
-    });
-
-    gsap.from('.travel', {
-        y: '20rem',
-        scrollTrigger: {
-            pin: false,
-            trigger: '.travel',
-            start: "-800rem 600rem",
-            end: "-300rem 300rem",
-            // end: "+=1500",
-            scrub: 2,
-            markers: false,
-            id: '.travel'
-        }
-    });
-
-    gsap.from('.travel-slide__data', {
-        y: '20rem',
-        scrollTrigger: {
-            pin: false,
-            trigger: '.travel',
-            start: "800rem 600rem",
-            end: "900rem 300rem",
-            // end: "+=1500",
-            scrub: 2,
-            markers: false,
-            id: '.travel-slide__data'
-        }
-    });
+    for(let i = 0; i < objectsArray.length; i++){
+        let currObj = objectsArray[i][1]
+        gsap.fromTo(currObj.objName, {
+            y: currObj.beginPosition
+        }, {
+            y: currObj.endPosition,
+            scrollTrigger: {
+                pin: false,
+                trigger: currObj.animationTrigger,
+                start: currObj.startCoord,
+                end: currObj.endCoord,
+                scrub: currObj.scrub,
+                markers: currObj.markers,
+                id: currObj.objId
+            }
+        });
+    }
 
 }
 
 
-
-preloader(false)
+preloader(true)
 mobileMenu()
 homeSwiperInit()
 surfSwiperInit()
 travelSwiperInit('.travel')
 travelSwiperInit('.sleep')
+shopSwiperInit()
+countPrice()
 date()
-// animation()
+board()
+animation()

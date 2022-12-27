@@ -7,7 +7,7 @@
 	var travelSlides = [
 		{
 			slideImg: 'Sleep-Image.webp', 
-			airline: 'Virgin Australia', 
+			airline: 'excellent', 
 			airlineIcon: 'star.svg',
 			datas: [
 				{
@@ -17,12 +17,12 @@
 				{
 					counting: true,
 					dataTitle: '# of nights', 
-					dataValue: '<span class="nights">1</span> nights'
+					dataValue: '<span class="nights jsCount" data-price="50">1</span> nights'
 				},
 				{
 					counting: true,
 					dataTitle: '# of guests', 
-					dataValue: '<span class="guests">1</span> guests'
+					dataValue: '<span class="guests jsCount" data-price="20">1</span> guests'
 				},
 				{
 					dataTitle: 'pricing', 
@@ -70,13 +70,13 @@ section.sleep
 				.swiper-slide.travel-slide
 					img.travel-slide__img(src="img/" + item.slideImg, alt="travel-img")
 					.travel-slide__data.data
-						.data__heading.data-heading(data-swiper-parallax="400" data-swiper-parallax-duration="600")
+						.data-heading(data-swiper-parallax="400" data-swiper-parallax-duration="600")
 							p.data-heading__title airline
 							b.data-heading__value= item.airline
 								img.data-heading__icon.data-heading__icon--rating(src="img/" + item.airlineIcon, alt="virgin-text")
 						.data__items(data-swiper-parallax="-400" data-swiper-parallax-duration="600")
 							each elem in item.datas
-								.data__item 
+								.data__item
 									p.data__title= elem.dataTitle
 									.data__box
 										b.data__value !{elem.dataValue}
@@ -92,4 +92,7 @@ section.sleep
 														path(d='M5.62718 0.137695H8.37201V13.8635H5.62718V0.137695Z' fill='#4AF6CD')
 					img.travel-slide__decor.travel-slide__decor--2(src="img/Hammock.webp", alt="airbus")
 					img.travel-slide__decor.travel-slide__decor--3(src="img/flower.webp", alt="cosktail")
+
+	.center-box
+		+surfView('book', 'stay', 'sleep__viewlink')
 

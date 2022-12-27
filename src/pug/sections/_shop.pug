@@ -1,0 +1,47 @@
+-
+	var extras = [
+		{img: 'Wax.png',      name: 'sex wax',   price: '$24.99'},
+		{img: 'Bracelet.png', name: 'pura vida', price: '$27.99'}
+	]
+
+section.shop 
+
+	h4.shop__title.title shop
+	p.shop__backtitle.backtitle shop
+
+	+sliderNav('shop__nav')
+
+	.swiper
+		.swiper-wrapper
+			.swiper-slide
+				img.shop-bg(src="img/Shop-back.webp", alt="shop-bg")
+				.swiper-slide__inner
+					.shop-info 
+						.shop-info__heading.data-heading(data-swiper-parallax="400" data-swiper-parallax-duration="600")
+							p.data-heading__title style
+							b.data-heading__value north nugget tt #[br] surfboard
+						img.shop-info__rating(src="img/star.svg", alt="rating")
+						.shop-info__price $799
+							span.shop-info__price--cent 99
+						+surfView('drop', 'in', 'shop__viewlink')
+					.board 
+						img.board__img(src="img/Surfboard.webp", alt="board")
+						each item in [0, 1, 2]
+							div(class=`board__point board__point--${item}`)
+								figure.board__dot
+								p.board__text.animate__animated double concave with vee shape low point
+
+					.extras 
+						h6.extras__title extras
+						.extras__box
+							each item in extras
+								.extras__item
+									img.extras__img(src="img/" + item.img, alt="icon")
+									span.extras__name= item.name
+									span.extras__price= item.price
+
+	.center-box 
+		+surfView('go', 'surf', 'end-viewlink')
+	.rights go-surf 2018. all rights reserved.
+
+

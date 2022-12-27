@@ -1,0 +1,146 @@
+.shop
+	padding: 7.5rem 0
+	overflow: hidden
+
+	.swiper
+		margin: 0 0 10rem 0
+
+	.swiper-slide__inner
+		display: flex
+		justify-content: space-between
+		align-items: center
+		width: 117.3rem
+		margin: 0 auto
+
+	&__viewlink
+		&::after
+			width: 46%
+
+.shop-info
+	display: flex
+	flex-direction: column
+	align-items: flex-start
+	&__heading
+	&__rating
+		width: 15.4rem
+	&__price
+		display: flex
+		margin: 0 0 5rem 0
+		font-size: 4rem
+		font-weight: 800
+		text-transform: uppercase
+		line-height: 3.6rem
+		&--cent
+			font-size: 2rem
+			line-height: 1.8rem
+
+.extras
+	margin: auto 0 0 0
+	&__title
+		margin: 0 0 2rem 0
+		font-size: 4rem
+		text-transform: uppercase
+	&__box
+		display: flex
+	&__item
+		display: flex
+		flex-direction: column
+		align-items: center
+		&:not(:last-child)
+			margin: 0 5rem 0 0
+	&__img
+		width: 12rem
+		height: 12rem
+		object-fit: contain
+	&__name
+		position: relative
+		margin: 0 0 1.3rem 0
+		font-size: 2.2rem
+		color: rgba(255, 255, 255, 0.5)
+		letter-spacing: 0.72rem
+		text-transform: uppercase
+	&__price
+		font-size: 2rem
+		font-weight: 800
+
+.board
+	position: relative
+	width: 22.8rem
+	&__dot
+		display: flex
+		align-items: center
+		justify-content: center
+		width: 2rem
+		height: 2rem
+		padding: 0.4rem
+		border-radius: 50%
+		background: #FFF
+		cursor: pointer
+		img
+			width: 100%
+	&__text
+		position: absolute
+		top: -0.5rem
+		left: 12rem
+		width: 18rem
+		font-size: 1.5rem
+		font-weight: 800
+		text-transform: uppercase
+		&::after
+			content: ''
+			position: absolute
+			top: 50%
+			left: -50%
+			display: block
+			width: 8rem
+			height: 1px
+			background: rgba(255,255,255,0.5)
+			transform: translateX(0)
+			transition: transform .3s, background .3s
+			transition-delay: .5s
+	&__point
+		position: absolute
+		z-index: 1
+		&--0
+			top: 21rem
+			right: 4rem
+		&--1
+			top: 29rem
+			left: -0.5rem
+		&--2
+			bottom: 7rem
+			left: 5.2rem
+		&.closed .board__text::after
+			transform: translateX(-10rem)
+			background: rgba(255,255,255,0)
+
+.end-viewlink
+	margin: 0 0 5rem 0
+	&::after
+		width: 70%
+
+.rights
+	font-size: 1.5rem
+	color: rgba(255, 255, 255, 0.5)
+	text-align: center
+	text-transform: uppercase
+
+.shop-bg
+	position: absolute
+	z-index: -1
+	right: 0
+	width: 105.2rem
+
+@media screen and ( max-width: 992px )
+	.shop
+		.swiper-slide__inner
+			flex-direction: column
+			align-items: flex-start
+			width: 100%
+			padding: 0 1rem
+	.shop-info
+		margin: 0 0 3rem 0
+
+	.board
+		display: none
+
