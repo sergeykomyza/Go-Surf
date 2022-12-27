@@ -264,8 +264,8 @@ const date = function () {
 function board(){
 
     let set = {
-        signPlus:            '<img src="/img/Plus.svg" alt="sign">',
-        signMinus:           '<img src="/img/Minus.svg" alt="sign">',
+        signPlus:            '<img src="img/Plus.svg" alt="sign">',
+        signMinus:           '<img src="img/Minus.svg" alt="sign">',
         animateClassIn:      'animate__fadeInLeft',
         animateClassOut:     'animate__fadeOutRight',
         parentEl:            '.board__point',
